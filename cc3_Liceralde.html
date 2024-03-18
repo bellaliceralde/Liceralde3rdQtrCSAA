@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challenge 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: lightseagreen;
+        }
+
+        div {
+            background-color: white;
+            width: 300px;
+            height: 30px;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px; /* Added margin for better spacing */
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            width: 100px; /* Adjusted width for better layout */
+        }
+    </style>
+</head>
+<body>
+    <h1>Name List</h1>
+
+    <table id="table">
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+        </tr>
+    </table>
+    <input type="text" id="nameInput" placeholder="Enter name (First, Middle, Last)">
+    <button onclick="addName()">Add Name</button>
+
+    <script>
+        function addName() {
+            var nameInput = document.getElementById("nameInput").value.trim();
+            var nameArray = nameInput.split(","); // Splitting the input by comma
+
+            // Checking if all three parts (first name, middle name, last name) are provided
+            if (nameArray.length === 3) {
+                var firstName = nameArray[0].trim();
+                var middleName = nameArray[1].trim();
+                var lastName = nameArray[2].trim();
+
+                // Creating a new row in the table
+                var table = document.getElementById("table");
+                var newRow = table.insertRow();
+
+                // Inserting cells with respective names
+                var firstNameCell = newRow.insertCell(0);
+                firstNameCell.textContent = firstName;
+
+                var middleNameCell = newRow.insertCell(1);
+                middleNameCell.textContent = middleName;
+
+                var lastNameCell = newRow.insertCell(2);
+                lastNameCell.textContent = lastName;
+
+                // Clearing the input field after adding the name
+                document.getElementById("nameInput").value = "";
+            } else {
+                alert("Please enter the name in the format: First Name, Middle Name, Last Name");
+            }
+        }
+    </script>
+</body>
+</html>
